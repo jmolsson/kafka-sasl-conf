@@ -43,5 +43,5 @@ esac
 
 #exec $base_dir/kafka-run-class.sh $EXTRA_ARGS kafka.Kafka "$@"
 
-exec $base_dir/kafka-run-class.sh $EXTRA_ARGS kafka.Kafka -Djava.security.auth.login.config=$base_dir/../config/kafka-server-jaas.conf "$@"
+exec $base_dir/kafka-run-class.sh $EXTRA_ARGS -Djava.security.auth.login.config=$base_dir/../config/kafka-server-jaas.conf kafka.Kafka "$@"
 
