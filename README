@@ -1,1 +1,8 @@
-kafka_2.12-2.2.0
+Example SASL conf for Kafka.
+
+Copy files recursively into
+
+kafka_2.12-2.2.0/
+
+
+
