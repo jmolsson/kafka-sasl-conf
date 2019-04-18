@@ -1,8 +1,45 @@
+
 Example SASL conf for Kafka.
+In the subdir logstash you will find example conf for logstash.
 
-Copy files recursively into
 
+0.
+Install kafka into /opt/kafka_2.12-2.2.0/
+
+1.
+Copy files from this repo recursively into
 kafka_2.12-2.2.0/
 
+2.
+Install logstash
+
+3.
+Copy logstash/etc/logstash/* recursively into /etc/logstash/
+
+4.
+Open a new shell. Start zookeeper using start-zookeeper.sh
+
+5.
+Open a new shell. Start Kafka using start-kafka.sh
+
+6.
+Open a new shell. Create topics using create-topic.sh
+
+7.
+Set ACL:s using set-acl.sh
+
+8.
+Open a new shell. Start a logstash producer using logstash/logstash-testproducer.sh
+Current directory must be /usr/share/logstash/
+
+9.
+Open a new shell. Start a logstash consumer using logstash/logstash-testconsumer.sh
+Current directory must be /usr/share/logstash/
+
+10.
+Write something on standard input (console) in the logstash-testproducer shell
+
+11.
+Check that the output appears on standard output (console) in the logstash-testconsumer shell
 
 
