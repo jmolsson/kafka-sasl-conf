@@ -41,4 +41,6 @@ case $COMMAND in
      ;;
 esac
 
+export KAFKA_OPTS="-Djava.security.auth.login.config=$base_dir/../config/zookeeper-jaas.conf"
 exec $base_dir/kafka-run-class.sh $EXTRA_ARGS org.apache.zookeeper.server.quorum.QuorumPeerMain "$@"
+
