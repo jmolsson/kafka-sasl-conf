@@ -1,0 +1,26 @@
+
+# Create a test CA
+openssl req -x509 -newkey rsa:2048 -out ca.crt -keyout ca.key -days 10000
+
+echo 01 > ca.srl
+touch ca.idx
+mkdir signed
+
+# Request a client certificate
+openssl req -newkey rsa -keyout client.key -out client.req
+# Sign the requested client certificate
+openssl ca -config ca.cnf -in client.req -out client.crt
+
+# Fix format for beats
+openssl pkcs8 -in client.key -traditional -out client.key.plain.pem
+openssl rsa -aes256 -in client.key.plain.pem -out client.key.p8
+rm client.key.plain.pem
+
+# Request server certificate
+openssl req -newkey rsa -keyout server.key -out server.req
+# Sign the requested server certificate
+openssl ca -config ca.cnf -in server.req -out server.crt
+
+# Fix format for java
+openssl pkcs8 -in server.key -topk8 -out server.key.p8 -v1 PBE-SHA1-3DES
+
